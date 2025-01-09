@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Site</title>
+    <link rel="stylesheet" href="{% static 'home/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>My E-commerce Store</h1>
+        <nav>
+            <a href="{% url 'home_page' %}">Home</a>
+            <a href="#">Cart</a>
+            <a href="#">Products</a>
+        </nav>
+    </header>
+    <main class="container">
+        <div class="product-grid">
+            {% for product in products %}
+            <div class="product-card">
+                <a href="{% url 'details_product' product.id %}" class="product-link">
+                    <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                    <div class="card-body">
+                        <h2>{{ product.title }}</h2>
+                        <p class="price">{{ product.price|floatformat:2 }}€</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 My E-commerce Store. All rights reserved. <a href="#">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>

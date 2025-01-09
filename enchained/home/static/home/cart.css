@@ -1,0 +1,140 @@
+/* Cart container */
+.cart-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Cart header */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.cart-header h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+/* Cart items list */
+.cart-items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item img {
+    max-width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+}
+
+.cart-item-name {
+    font-size: 18px;
+    color: #333;
+}
+
+.cart-item-price {
+    font-size: 16px;
+    color: #777;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item-quantity input {
+    width: 40px;
+    padding: 5px;
+    margin: 0 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.cart-item-remove {
+    font-size: 14px;
+    color: #e74c3c;
+    cursor: pointer;
+}
+
+/* Cart total */
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #ddd;
+}
+
+.cart-total p {
+    font-size: 20px;
+    color: #333;
+}
+
+.cart-total .total {
+    font-size: 22px;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* Checkout button */
+.checkout-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #27ae60;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.checkout-btn:hover {
+    background-color: #2ecc71;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    .cart-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item img {
+        margin-bottom: 10px;
+    }
+
+    .cart-item-details {
+        margin-left: 0;
+    }
+
+    .cart-total {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

@@ -1,0 +1,228 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Header */
+header {
+    background-color: #343a40;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+header nav {
+    margin-top: 10px;
+}
+
+header nav a {
+    margin: 0 15px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    color: #28a745;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 20px 0;
+}
+
+.product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Product Card Images */
+.product-card img {
+    width: 100%; /* Assure que l'image prend toute la largeur de la carte */
+    height: 407px; /* Augmente la hauteur pour un format rectangulaire */
+    object-fit: contain; /* Garde les proportions de l'image sans la couper */
+    border-bottom: 1px solid #ddd; /* Ajoute une ligne séparatrice sous l'image */
+    background-color: #f8f9fa; /* Ajoute un fond neutre pour les images avec un contour */
+    padding: 10px; /* Crée un espace entre l'image et ses bords */
+}
+
+/* Images dans le panier */
+.cart-table td img {
+    width: 100px; /* Fixe une taille standard pour les images du panier */
+    height: auto; /* Ajuste la hauteur en fonction de la largeur */
+    object-fit: cover; /* Coupe l'image pour remplir l'espace */
+    border-radius: 5px; /* Ajoute des coins arrondis */
+}
+
+/* Images par défaut */
+.default-image {
+    width: 100%; /* S'adapte à l'espace disponible */
+    height: 250px;
+    object-fit: contain; /* Garde les proportions pour les images par défaut */
+    background-color: #e9ecef; /* Ajoute une couleur de fond discrète */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d; /* Couleur pour le texte de remplacement */
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+
+.product-card .card-body {
+    padding: 1rem;
+}
+
+.product-card h2 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.product-card p {
+    margin: 5px 0;
+    color: #6c757d;
+}
+
+.product-card .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #28a745;
+    margin-top: 10px;
+}
+
+.product-card button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.product-card button:hover {
+    background-color: #218838;
+}
+
+/* Cart Page */
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.cart-table th, .cart-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.cart-table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+.cart-table td img {
+    width: 80px;
+    height: auto;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.cart-total {
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.checkout-button {
+    display: block;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    margin-left: auto;
+    width: fit-content;
+}
+
+.checkout-button:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #28a745;
+    font-weight: bold;
+}
+
+footer a:hover {
+    color: #1c7430;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .product-card {
+        margin-bottom: 20px;
+    }
+
+    .cart-table td img {
+        width: 60px;
+    }
+}
