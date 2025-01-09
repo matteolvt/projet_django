@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from home.models import Product
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home_page(request):
@@ -17,6 +18,7 @@ def details_product(request, id):
     product = get_object_or_404(Product, id=id)
     return render(request, 'home/details_product.html', {"product": product})
 
+@login_required
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     cart = request.session.get('cart', {})  
