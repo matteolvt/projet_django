@@ -9,7 +9,7 @@ def register_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('home')
+            return redirect('home_page')
     else:
         form = UserCreationForm()
     return render(request, 'login/register.html', {'form': form})
@@ -23,7 +23,7 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('home_page')
             else:
                 error_message = 'Nom d\'utilisateur ou mot de passe incorrect'
                 return render(request, 'login/login.html', {'form': form, 'error_message': error_message})
