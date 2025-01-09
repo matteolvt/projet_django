@@ -4,6 +4,7 @@
 *.pyd
 __pycache__/
 *.so
+db.sqlite3
 
 # Environnements virtuels
 venv/
