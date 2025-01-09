@@ -1,0 +1,43 @@
+# Fichiers Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+
+# Environnements virtuels
+venv/
+.env/
+*.env
+
+# Base de données SQLite
+db.sqlite3
+
+# Fichiers générés par Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+
+# Répertoires de migrations
+*/migrations/
+
+# Dossier de media
+media/
+
+# Dossier de statiques collectés
+staticfiles/
+
+# IDEs
+.vscode/
+.idea/
+
+# Fichiers d'installation de Python
+*.egg-info/
+*.egg
+
+# Fichiers temporaires
+*.bak
+*.swp
+*.swo
