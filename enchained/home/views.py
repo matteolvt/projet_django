@@ -1,15 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from home.models import Product, Category
-from django.contrib.auth.decorators import login_required
-
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required, user_passes_test
 from home.models import Product, Category
+from home.forms import ProductForm
 
-from .forms import ProductForm
 
 # Create your views here.
 
 def home_page(request):
+    categories = Category.objects.all()
     products = Product.objects.all()
 
     if 'title' in request.GET and request.GET['title']:
@@ -19,13 +18,10 @@ def home_page(request):
         category = request.GET['category']
         products = products.filter(category__name=category)
 
-    categories = Category.objects.all()
-
     return render(request, 'home/home.html', {
         'products': products,
         'categories': categories,
     })
-
 
 def details_product(request, id):
     product = get_object_or_404(Product, id=id)
@@ -61,14 +57,14 @@ def remove_from_cart(request, product_id):
         request.session['cart'] = cart
     return redirect('cart_view')
 
+
 @login_required
 def add_product(request):
     if request.method == 'POST':
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('product_list')  
+            return redirect('home_page')
     else:
         form = ProductForm()
-
-    return render(request, 'add_product.html', {'form': form})
+    return render(request, 'home/add_product.html', {'form': form})

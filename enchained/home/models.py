@@ -11,19 +11,15 @@ class Product(models.Model):
     content = models.TextField(null=True , blank=True)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, null=True, blank=True)
     price = models.FloatField(null=True, blank=True)
-    creation_date = models.DateField()
 
     class Meta:
         verbose_name = 'Product'
         verbose_name_plural = 'Prodcuts'
 
-    def __str__(self) -> str:
+    def str(self) -> str:
         return f"{self.title} - {self.category}"
-    
-    def clean(self):
-         if self.creation_date < datetime.now().date():
-            raise ValidationErr('La date de création ne peut pas être dans le passé.')
-    
+
+
 
 class Category(models.Model):
     name = models.CharField(max_length=50, null=True, blank=True)
@@ -31,11 +27,4 @@ class Category(models.Model):
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['title', 'image', 'content', 'category', 'price', 'creation_date']
-    
-    # Validation personnalisée
-    def clean_creation_date(self):
-        creation_date = self.cleaned_data.get('creation_date')
-        if creation_date < datetime.now().date():
-            raise forms.ValidationError("La date de création ne peut pas être dans le passé.")
-        return creation_date
+        fields = ['title', 'image', 'content', 'category', 'price']
