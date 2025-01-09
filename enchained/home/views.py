@@ -1,18 +1,27 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from home.models import Product
+from home.models import Product, Category
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-def home_page(request):
+from django.shortcuts import render
+from home.models import Product, Category
 
-    if 'title' in request.GET:
-        products = Product.objects.filter(title__icontains=request.GET['title'])
-    if 'category' in request.GET:
-        products = Product.objects.filter(category__icontains=request.GET['category'])
-    else:
-        products = Product.objects.all()
-    
-    return render(request, 'home/home.html', {"products": products})
+def home_page(request):
+    products = Product.objects.all()
+
+    if 'title' in request.GET and request.GET['title']:
+        products = products.filter(title__icontains=request.GET['title'])
+
+    if 'category' in request.GET and request.GET['category']:
+        category = request.GET['category']
+        products = products.filter(category__name=category)
+
+    categories = Category.objects.all()
+
+    return render(request, 'home/home.html', {
+        'products': products,
+        'categories': categories,
+    })
+
 
 def details_product(request, id):
     product = get_object_or_404(Product, id=id)
