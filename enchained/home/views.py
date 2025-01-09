@@ -5,6 +5,10 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from home.models import Product, Category
 
+from .forms import ProductForm
+
+# Create your views here.
+
 def home_page(request):
     products = Product.objects.all()
 
@@ -56,3 +60,15 @@ def remove_from_cart(request, product_id):
         del cart[str(product_id)]
         request.session['cart'] = cart
     return redirect('cart_view')
+
+@login_required
+def add_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('product_list')  
+    else:
+        form = ProductForm()
+
+    return render(request, 'add_product.html', {'form': form})
